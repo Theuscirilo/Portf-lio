@@ -1,91 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <h2>Meu Portfólio</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#skills">Habilidades</a></li>
-                    <li><a href="#projects">Projetos</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-            </nav>
+export default function Portfolio() {
+  useEffect(() => {
+    document.title = "Maha | Front-End Developer";
+  }, []);
+
+  return (
+    <div className="bg-black text-white min-h-screen px-8 py-10">
+      {/* Header */}
+      <header className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-green-400">Uniqia</h1>
+        <nav className="space-x-6">
+          <a href="#about" className="hover:text-green-400">About</a>
+          <a href="#projects" className="hover:text-green-400">Projects</a>
+          <a href="#contact" className="hover:text-green-400">Contact</a>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="mt-20 text-center"
+      >
+        <h2 className="text-5xl font-bold">Hello, I am <span className="text-green-400">Maha</span>,</h2>
+        <h3 className="text-4xl font-bold">Front End Developer</h3>
+        <p className="text-gray-400 mt-4">
+          Currently located in Pakistan, I love building interactive digital experiences on the web.
+        </p>
+        <button className="mt-6 px-6 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-500">
+          Let's get in touch!
+        </button>
+      </motion.section>
+
+      {/* Skills and Tools */}
+      <section id="about" className="mt-24">
+        <h3 className="text-3xl font-bold">Skills and Tools</h3>
+        <p className="text-gray-400">Here are some of the technologies I use:</p>
+        <div className="mt-6 flex flex-wrap gap-4">
+          {["JavaScript", "React", "Next.js", "Tailwind CSS", "Express", "Chart.js"].map(skill => (
+            <span key={skill} className="px-4 py-2 bg-gray-800 rounded-lg">{skill}</span>
+          ))}
         </div>
-    </header>
+      </section>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Olá, eu sou [Seu Nome]</h1>
-            <p>Desenvolvedor Frontend | Criador de soluções inovadoras</p>
-            <a href="#contact" class="cta">Entre em Contato</a>
+      {/* Projects */}
+      <section id="projects" className="mt-24">
+        <h3 className="text-3xl font-bold">Projects</h3>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-gray-900 p-4 rounded-lg">
+            <img src="https://source.unsplash.com/random/300x200" alt="Project 1" className="rounded-lg" />
+            <h4 className="mt-4 text-xl font-bold">Creative Designer Conference</h4>
+          </div>
+          <div className="bg-gray-900 p-4 rounded-lg">
+            <img src="https://source.unsplash.com/random/300x200?tech" alt="Project 2" className="rounded-lg" />
+            <h4 className="mt-4 text-xl font-bold">E-commerce Holiday Sale</h4>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="about" class="section">
-        <h2>Sobre Mim</h2>
-        <p>Sou um desenvolvedor web apaixonado por criar interfaces de usuário eficientes e atraentes. Com experiência em HTML, CSS, JavaScript e React, estou sempre buscando novos desafios e oportunidades para aprender e crescer.</p>
-    </section>
-
-    <section id="skills" class="section">
-        <h2>Habilidades</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <h3>HTML</h3>
-                <p>Experiência sólida na criação de páginas web responsivas e bem estruturadas.</p>
-            </div>
-            <div class="skill-card">
-                <h3>CSS</h3>
-                <p>Especialista em design responsivo e otimização de performance de sites.</p>
-            </div>
-            <div class="skill-card">
-                <h3>JavaScript</h3>
-                <p>Forte domínio de JS, com experiência em frameworks como React.js.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <h2>Projetos</h2>
-        <div class="projects-container">
-            <div class="project-card">
-                <h3>Projeto 1</h3>
-                <p>Descrição breve do projeto 1.</p>
-                <a href="#">Veja o Projeto</a>
-            </div>
-            <div class="project-card">
-                <h3>Projeto 2</h3>
-                <p>Descrição breve do projeto 2.</p>
-                <a href="#">Veja o Projeto</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <h2>Contato</h2>
-        <form id="contact-form">
-            <input type="text" placeholder="Seu Nome" required>
-            <input type="email" placeholder="Seu E-mail" required>
-            <textarea placeholder="Sua Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 - [Seu Nome]. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+      {/* Contact */}
+      <section id="contact" className="mt-24 text-center">
+        <h3 className="text-3xl font-bold">Let's talk about your project</h3>
+        <button className="mt-6 px-6 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-500">
+          Contact us
+        </button>
+      </section>
+    </div>
+  );
+}
